@@ -1,0 +1,29 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+spring:
+  config:
+    import: configserver:http://localhost:8080
+  cloud:
+    config:
+      profile: test
+      enabled: true
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080/admin
+        instance:
+          service-url: http://localhost:8090
+          health-url: http://localhost:8090/actuator/health
+          management-url: http://localhost:8090/actuator
+server:
+  port: 8090
+name: 9999
+logging:
+  level:
+    de.codecentric.boot.admin: DEBUG

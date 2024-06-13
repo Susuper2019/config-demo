@@ -1,0 +1,31 @@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+spring:
+  boot:
+    admin:
+      context-path: /admin
+#      ui:
+#        public-url: file:///D:/store/github-code/demo/config-server/src/main/resources/config-server/spring-boot-admin-server-ui/
+  profiles:
+    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      enabled: true
+      server:
+        native:
+          search-locations: file:///D:/store/github-code/demo/config-server/src/main/resources/config-server
+        bootstrap: true
+      profile: native
+logging:
+  level:
+    de.codecentric.boot.admin: DEBUG
+    org.springframework.web: DEBUG
